@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+<link rel="stylesheet" href="./style/style.css">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/2.0.2/timeago.js" integrity="sha512-N3oYWQZs8pMSQhQtB13XHSIry/zDIUimpMqX4QMULawuaAYgRWSiU17cLHh7f51xgkGY18jQtY2ph98HtKeWaA==" crossorigin="anonymous"></script>
+
+</head>
+    <body>
+
+        <div class="testbox">
+            <h1>login</h1>
+
+            <form  onsubmit="return login()">
+                <hr>
+                <div class="accounttype">
+                    <a href="index.html">Signup</a>
+                  </div>
+                <hr>
+                <label id="icon" ><img src="./image/email.png" alt=""></label>
+                <input required type="email"  id="email" placeholder="Email"  />
+                 <label id="icon"><img src="./image/lock.png" alt=""></label>
+                <input required type="password"  id="password" placeholder="Password"  />
+                <div class="login">
+                    <button  class="button">Login</button>
+                </div>
+                <a href="forgot-password.html">Forgot Password</a>
+            </form>
+        </div>
+
+    </body>
+
+    </html>
+
+
+
+<script src="app.js"></script>
+</body>
+
+</html>

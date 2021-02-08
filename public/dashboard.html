@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome!</title>
+  <link rel="stylesheet" href="./style//style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/2.0.2/timeago.js"
+    integrity="sha512-N3oYWQZs8pMSQhQtB13XHSIry/zDIUimpMqX4QMULawuaAYgRWSiU17cLHh7f51xgkGY18jQtY2ph98HtKeWaA=="
+    crossorigin="anonymous"></script>
+  <script src="./timeago.js"></script>
+</head>
+
+
+
+<!-- Page content -->
+
+<body onload="getProfile()">
+
+
+  <button id="lgBtn" onclick="logout()" id="lgBtn" class="btn btn-sm btn-outline-secondary ml-3"
+    type="button">LOGOUT</button>
+  <div class="w3-main" style="margin-left:200px">
+    <div class="container">
+      <div class="create__post">
+        <div class="create__post__content">
+
+        </div>
+        <form onsubmit="return postTweet()">
+          <img id="avatar" alt="Avatar" class="Profileavatar">
+          <input id="tweetText" placeholder="What's on your mind?" class="posts__input" maxlength="150">
+          <button id="postBtn" class="post__button">Post</button>
+          <div class="tweetImage">
+            <div class="image-upload">
+              <label for="tweetImage">
+                <div class="upload-icon">
+                  <img src="image/upload.png">
+                </div>
+              </label>
+              <input id="tweetImage" accept="image/*" type="file" />
+            </div>
+        </form>
+      </div>
+      <div class="myCard">
+        <div>
+
+        </div>
+
+        <div class="posts__container">
+
+          <ul id="posts">
+
+          </ul>
+          <div id="myPost">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  </div>
+  <div class="sidenav">
+    <form class="form-inline">
+
+      <div class="profileInfo">
+        <div class="imgContainer">
+          <label class="filebutton">
+            <img class="img " src="./image/image.png" alt="John" id="profilePic" onmouseover="changeText()"
+              onmouseout="hideText()">
+            <span><input class="opacityFile" type="file" id="fileInput" name="myfile" onchange="uploadProfilePic()">
+              <!-- <p id="uploadPicture">Change profile picture</p> -->
+              <img id="uploadPicture" src="./image/uploadPicture.png" alt="">
+            </span>
+          </label>
+          <h3 id="welcomeUser">
+          </h3>
+          <p id="uploadTxt"></p>
+        </div>
+        <div class="profilefunctions">
+          <a onclick="myTweets()">My profile</a>
+          <a onclick="getTweets()">Home</a>
+        </div>
+      </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

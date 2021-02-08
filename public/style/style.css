@@ -1,0 +1,559 @@
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, 
+pre, form, fieldset, input, textarea, p, blockquote, th, td {
+  padding:0;
+  margin:0;
+  }
+
+fieldset, img {border:0}
+
+ol, ul, li {list-style:none;}
+
+:focus {outline:none}
+
+body,
+input,
+textarea,
+select {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #4c4c4c;
+}
+
+.signuptext {
+  font-size: 12px;
+  width: 150px;
+  display: inline-block;
+  /* margin-left: 18px; */
+}
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+  color: #4c4c4c;
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+html{
+  background-color: #ffffff;
+}
+
+.testbox {
+  margin: 20px auto;
+  width: 343px; 
+  height: 464px; 
+  -webkit-border-radius: 8px/7px; 
+  -moz-border-radius: 8px/7px; 
+  border-radius: 8px/7px; 
+  background-color: #ebebeb; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  border: solid 1px #cbc9c9;
+}
+
+input[type=radio] {
+  visibility: hidden;
+}
+
+form{
+  margin: 0 30px;
+}
+.icon-user:before {
+    content: "\f007";
+}
+
+label.radio {
+	cursor: pointer;
+  text-indent: 35px;
+  overflow: visible;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+label.radio:before {
+  background: #3a57af;
+  content:'';
+  position: absolute;
+  top:2px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+}
+
+label.radio:after {
+	opacity: 0;
+	content: '';
+	position: absolute;
+	width: 0.5em;
+	height: 0.25em;
+	background: transparent;
+	top: 7.5px;
+	left: 4.5px;
+	border: 3px solid #ffffff;
+	border-top: none;
+	border-right: none;
+
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+input[type=radio]:checked + label:after {
+	opacity: 1;
+}
+
+hr{
+  color: #a9a9a9;
+  opacity: 0.3;
+}
+
+input[type=email],input[type=password],input[type=text]{
+  width: 200px; 
+  height: 39px; 
+  -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  -moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
+  border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  background-color: #fff; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 1px #cbc9c9;
+  margin-left: -5px;
+  margin-top: 13px; 
+  padding-left: 10px;
+}
+
+input[type=password]{
+  margin-bottom: 25px;
+}
+
+#icon {
+  display: inline-block;
+  width: 30px;
+  background-color: #3a57af;
+  padding: 8px 0px 8px 15px;
+  margin-left: 15px;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+.gender {
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.accounttype{
+  margin-left: 8px;
+  margin-top: 20px;
+}
+
+.button {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  padding: 0px 25px 0px 20px;
+  margin: 10px 8px 20px 0px;
+  display: inline-block;
+  float: right;
+  text-decoration: none;
+  width: 105px;
+  height: 27px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #3a57af;
+  -webkit-box-shadow: 0 3px rgba(58,87,175,.75);
+  -moz-box-shadow: 0 3px rgba(58,87,175,.75);
+  box-shadow: 0 3px rgba(58,87,175,.75);
+  transition: all 0.1s linear 0s;
+  top: 0px;
+  position: relative;
+}
+.post__button{
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  padding: 0px 25px 0px 20px;
+  margin: 10px 8px 20px 0px;
+  display: inline-block;
+  text-decoration: none;
+  width: 40%;
+  height: 27px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #3a57af;
+  -webkit-box-shadow: 0 3px rgba(58,87,175,.75);
+  -moz-box-shadow: 0 3px rgba(58,87,175,.75);
+  box-shadow: 0 3px rgba(58,87,175,.75);
+  transition: all 0.1s linear 0s;
+  /* position: relative; */
+  display: block;
+  margin: 0px auto;
+  position: relative;
+  top: 15px;
+  right: -11px;
+}
+button:hover {
+  /* top: -1px; */
+  background-color: black;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  /* box-shadow: none; */
+  color: white;
+}
+.login{
+        margin: 0 auto !important;
+        clear: both !important;
+        display:flex;
+        justify-content: center;
+}
+
+
+.signin{
+        height: auto !important;
+}
+
+.myCard {
+  /* max-width: 300px; */
+  margin: 50px auto;
+  /* text-align: center; */
+  /* display: flex; */
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.logoutBtn {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 2px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.icontxt {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.logoutBtn, a:hover {
+  opacity: 0.7;
+}
+.posts{
+      margin-top:50px;
+}
+
+.userName {
+    /* display: inline; */
+    /* align-content: flex-end; */
+    /* vertical-align: top; */
+    font-size: 18px;
+    position: relative;
+    bottom: 52px;
+    left: 55px;
+}
+.img{
+  vertical-align: middle;
+  /* width: 170px; */
+  border-radius: 50%;
+  display: block;
+  margin: 8px auto;
+  max-width: 100%;
+  height: auto;
+  max-width: 170px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.create__post{
+    text-align: center;
+    margin-top:50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-left: 13px;
+    width: 550px;
+    margin: 110px auto;
+    height: 110px;
+}
+
+.posts__container{
+    margin: 0 auto;
+    /* text-align: center; */
+    /* display: flex; */
+    justify-content: center;
+    /* position: relative; */
+}
+li{
+  /* list-style: none; */
+  padding: 10px;
+  font-size: 18px;
+  padding: 10px;
+  transform: rotate(-180deg);
+  text-align: justify;
+  /* border-bottom: 1px solid #f5f5; */
+  margin-bottom: 15px;
+  box-shadow: 1px 0px 3px 0 rgba(0, 0, 0, 0.2);
+  border: 2px solid #f5f5f5f5;
+  border-radius: 16px;
+}
+ul{
+  transform: rotate(180deg);
+}
+.posts__input{
+      border-top:none;
+      border-left:none;
+      border-right:none;
+      position: relative;
+      top: 18px;
+      /* border-bottom-color: darkslateblue; */
+      /* border-top-color: darkslateblue; */
+      /* border-radius: 4px; */
+      box-shadow: 0 5px 21px 0 rgba(135,140,157,.2);
+      border-radius: 12px;
+      border-bottom: 0px;
+}
+/* .posts__input::placeholder{
+    text-align: center;
+} */
+@media (max-width:775px)
+{
+  .myCard{
+      text-align:center;
+      overflow: hidden;
+  }
+  .posts__input{
+    width: 300px;
+    position: relative;
+    top: 15px;
+    margin-left: 5px;
+    border-radius: 12px;
+    height: 32px;
+    padding-left: 12px;
+}
+}
+@media (min-width:775px)
+{
+  .myCard{
+      /* display:flex; */
+      overflow: hidden;
+      position: relative;
+      width: 550px;
+  }
+  .posts__input{
+    width: 82%;
+    height: 34px;
+    padding-left: 10px;
+    background-color: #F0F2F5;
+}
+.posts__container{
+    /* margin-left:50px; */
+}
+
+.myCard__content{
+    margin-top:50px;
+}
+.navbar{
+  justify-content: center !important;
+}
+}
+.userPost{
+    width:100%;
+    font-size:16px;
+}
+.timeago{
+  display: inline-block;
+  /* float: right; */
+  /* position: absolute; */
+  /* right: -24px; */
+  /* top: 6px; */
+  font-size: 10px;
+  font-weight: bolder;
+  position: relative;
+  /* float: right; */
+  left: 56px;
+  bottom: 69px;
+}
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* margin-top: 13px; */
+}
+.Profileavatar{
+  vertical-align: middle;
+  max-height: 50px;
+  border-radius: 50%;
+  position: relative;
+  top: 16px;
+  max-width: 50px;
+  height: auto;
+  width: auto;
+}
+.userPost{
+  position:relative;
+  left: 58px;
+  bottom: 50px;
+  left: 13px;
+  font-size: 20px;
+}
+#uploadTxt{
+  text-align: center;
+}
+.opacityFile{
+  display:none;
+}
+.filebutton{
+  display: block !important;
+}
+#profilePic:hover{
+  opacity: 0.7;
+  cursor: pointer;
+  transition: 0.5s;
+  background-color: black;
+  color: black;
+  filter: brightness(0.49);
+}
+.imgContainer{
+  position: relative;
+}
+#uploadPicture{
+  position: relative;
+  /* position: absolute; */
+  margin: 0 auto;
+  text-align: center;
+  /* top: -99px; */
+  bottom: 26px;
+  /* color: rgb(255 255 255); */
+  font-weight: bold;
+  color: black;
+  left: 42px;
+}
+/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 215px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #f5f5f5f5; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.filebutton{
+  height: 180px;
+}
+.profilefunctions{
+    margin-top: 38px;
+}
+#welcomeUser{
+  text-align: center;
+}
+.profileInfo{
+  margin-top: 36%;
+}
+#lgBtn{
+  position: absolute;
+  top: 10px;
+  z-index: 1;
+  right: 1px;
+  float: right;
+}
+.image-upload > input
+{
+    display: none;
+}
+.upload-icon{
+	/* width: 26px; */
+	height: 31px;
+	/* border: 2px solid #5642BE; */
+	/* border-style: dotted; */
+	border-radius: 18px;
+	position: relative;
+	top: 78px;
+	/* left: 240px; */
+	/* top: 85px; */
+	left: 189px;
+}
+.upload-icon img{
+	/* width: 16px; */
+	/* height: 60px; */
+	margin:19px;
+	cursor: pointer;
+	position: relative;
+	bottom: 13px;
+	right: 16px;
+	/* float: right; */
+}
+.tweetImage{
+  display:inline;
+  position: relative;
+  top: -97px;
+}
+.create__post__content{
+  margin-top: 42px;
+  position: relative;
+}
+.posts__input:focus{
+  background-color:white;
+}
+.tweetPostImage{
+  position:relative;
+  /* bottom: 48px; */
+  margin: 0 auto;
+  width: 100%;
+  bottom: 52px;
+  height: 400px;
+}
+a:hover{
+  cursor:pointer;
+}
