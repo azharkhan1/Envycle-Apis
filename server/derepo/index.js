@@ -48,10 +48,13 @@ var userSchema = new mongoose.Schema({
 var userModel = mongoose.model("users", userSchema);
 
 var vendorSchema = new mongoose.Schema({
-    userEmail: String,
-    userName: String,
-    userPassword: String,
+    vendorEmail: String,
+    vendorName: String,
+    vendorPassword: String,
+    vendorPhone: String,
+    vendorAddress: String,
 });
+
 var vendorModel = mongoose.model("vendors" , vendorSchema);
 
 
@@ -63,21 +66,20 @@ var otpSchema = new mongoose.Schema({
 });
 var otpModel = mongoose.model("otp", otpSchema);
 
-var tweetsSchema = mongoose.Schema({
+var recycleMaterial = mongoose.Schema({
+    cardBoard : String,
+    plastic : String,
     userEmail : String,
-    tweetText : String,
-    userName : String,
-    tweetImage : String,
     "createdOn" : { "type": Date, "default": Date.now },
 })
 
-var tweetsModel = mongoose.model("tweets",tweetsSchema);
+var materialsModel = mongoose.model("tweets",recycleMaterial);
 
 
 
 module.exports = {
     userModel: userModel,
     otpModel: otpModel,
-    tweetsModel : tweetsModel,
+    materialsModel : materialsModel,
     vendorModel : vendorModel,
 }
