@@ -17,7 +17,7 @@ var vendorRoute = require("./routes/vendorauth");
 var http = require("http");
 
 var { SERVER_SECRET, PORT } = require("./core");
-var { userModel, materialsModel , vendorModel } = require("./derepo");
+var { userModel, placedCollectionModel , vendorModel } = require("./derepo");
 
 
 
@@ -44,7 +44,6 @@ app.use("/auth", authRoutes);
 
 
 app.use(function (req, res, next) {
-
     console.log("req.cookies: ", req.cookies);
     if (!req.cookies.jToken) {
         res.status(401).send("include http-only credentials with every request")
@@ -55,14 +54,13 @@ app.use(function (req, res, next) {
             const issueDate = decodedData.iat * 1000; // 1000 miliseconds because in js ms is in 16 digits
             const nowDate = new Date().getTime();
             const diff = nowDate - issueDate; // 86400,000
-            
-            if (diff > 30) { // expire after 5 min (in milis)
+
+            if (diff > 3000000) { // expire after 5 min (in milis)
                 res.status(401).send("token expired")
-            } 
-              
+            }
+
             else { // issue new token
-                if (!decodedData.vendorEmaail)
-                {
+                if (!decodedData.vendorEmaail) {
                     var token = jwt.sign({
                         id: decodedData.id,
                         userName: decodedData.userName,
@@ -77,7 +75,7 @@ app.use(function (req, res, next) {
                     req.headers.jToken = decodedData;
                     next();
                 }
-                else{
+                else {
                     var token = jwt.sign({
                         id: decodedData.id,
                         vendorName: decodedData.vendorName,
@@ -92,8 +90,8 @@ app.use(function (req, res, next) {
                     req.headers.jToken = decodedData;
                     next();
                 }
-                }
-          
+            }
+
         } else {
             res.status(401).send("invalid token")
         }
@@ -132,36 +130,55 @@ app.get("/vendorProfile", (req, res, next) => {
         })
 });
 
-app.get("/getTweets", (req, res, next) => {
+app.post("/schdeduleMaterial" , (req,res,next)=>{
 
-    tweetsModel.find({}, (err, data) => {
-        if (!err) {
-            userModel.find({}, "profileUrl userEmail", (err, user) => {
-                console.log("tweet data=>", data);
+    if (req.body.cardBoard || req.body.plastic)
+    {
+    userModel.findOne({userEmail:req.body.jToken.userEmail} , (err,userFound)=>{
+        if (!err)
+        {
+            placedCollectionModel.create({
+                cardBoard : req.body.cardBoard,
+                plastic : req.body.plastic,
+                userEmail : req.body.jToken.userEmail,
+                userName : req.body.jToken.userName,
+            }).then((orderPlaced)=>{
                 res.status(200).send({
-                    tweets: data,
-                    profileUrl: user,
-
-                });
+                    message : "Your request has been sent succesfully" + orderPlaced,
+            });
+                io.emit("requests" , orderPlaced);
+        }) 
+            .catch((err)=>{
+                    res.status(500).send({
+                        message : "an error occured"
+                    })
             })
         }
-        else {
-            console.log("error : ", err);
-            res.status(500).send("error");
-        }
     })
+}
+else{
+        res.status(404).send(
+        `
+            Please send one of the following in json body:
+            e.g
+            {
+                plastic : "xxkg",
+                cardBoard : "xx"kg"
+            }
+         `
+        )
+}
+
 });
 
-app.get("/myTweets", (req, res, next) => {
-    console.log("my tweets user=>", req.body);
-    userModel.findOne({ userEmail: req.body.jToken.userEmail }, "profileUrl", (err, userData) => {
+app.get("/myRequests", (req, res, next) => {
+
+    userModel.findOne({ userEmail: req.body.jToken.userEmail },  (err, userData) => {
         if (!err) {
-            tweetsModel.find({ userEmail: req.body.jToken.userEmail }, (err, data) => {
+            placedCollectionModel.find({ userEmail: req.body.jToken.userEmail }, (err, data) => {
                 if (!err) {
-                    console.log("profile url is => " , userData.profileUrl);
                     res.status(200).send({
-                        tweets: data,
-                        profileUrl : userData.profileUrl,
+                        placedRequests: data,
                     });
                 }
                 else {
@@ -174,9 +191,7 @@ app.get("/myTweets", (req, res, next) => {
             console.log("error : ", err);
             res.status(500).send("error");
         }
-
     })
-
 });
 
 

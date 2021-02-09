@@ -17,11 +17,13 @@ api.post("/signup", (req, res) => {
             `
             Please send following in json body
             e.g
+            {
             vendorName : "abc",
             vendorEmail : "abc@gmail.com",
             vendorAddress : "xxx",
             vendorPassword : "xxx",
             vendorPhone : "xxx"
+            }
             `
         )
         return;
@@ -128,7 +130,6 @@ api.post("/logout", (req, res, next) => {
         httpOnly: true
     });
     res.clearCookie();
-
     res.send("logout succesfully");
 
 })

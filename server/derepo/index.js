@@ -66,20 +66,20 @@ var otpSchema = new mongoose.Schema({
 });
 var otpModel = mongoose.model("otp", otpSchema);
 
-var recycleMaterial = mongoose.Schema({
+var collection = mongoose.Schema({
     cardBoard : String,
     plastic : String,
     userEmail : String,
     "createdOn" : { "type": Date, "default": Date.now },
 })
 
-var materialsModel = mongoose.model("tweets",recycleMaterial);
+var placedCollectionModel = mongoose.model("tweets",collection);
 
 
 
 module.exports = {
     userModel: userModel,
     otpModel: otpModel,
-    materialsModel : materialsModel,
+    placedCollectionModel : placedCollectionModel,
     vendorModel : vendorModel,
 }
