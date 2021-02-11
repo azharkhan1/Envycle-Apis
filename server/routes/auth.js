@@ -16,6 +16,7 @@ api.post("/signup", (req, res, next) => {
         || !req.body.userPassword
         || !req.body.userName
         || !req.body.userAddress
+        || !req.body.userPhone
     ) {
         res.status(403).send(`
             please send name, email, passwod, phone and gender in json body.
@@ -24,7 +25,8 @@ api.post("/signup", (req, res, next) => {
                 "userName": "Azhar",
                 "userEmail": "azhar@gmail.com",
                 "userPassword": "abc",
-                "userAddress" : "abcd address"
+                "userAddress" : "abcd address",
+                "userPhone" : "12333344xx"
             }`)
         return;
     }
@@ -37,6 +39,8 @@ api.post("/signup", (req, res, next) => {
                         userEmail: req.body.userEmail,
                         userPassword: hashPassword,
                         userName: req.body.userName,
+                        userPhone : req.body.userPhone,
+                        userAddress : req.body.userAddress,
                     });
 
                     newUser.save((err, data) => {

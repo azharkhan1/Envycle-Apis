@@ -17,7 +17,7 @@ var vendorRoute = require("./routes/vendorauth");
 var http = require("http");
 
 var { SERVER_SECRET, PORT } = require("./core");
-var { userModel, placedCollectionModel , vendorModel } = require("./derepo");
+var { userModel, placedCollectionModel, vendorModel } = require("./derepo");
 
 
 
@@ -65,7 +65,8 @@ app.use(function (req, res, next) {
                         id: decodedData.id,
                         userName: decodedData.userName,
                         userEmail: decodedData.userEmail,
-                        profileUrl: decodedData.profileUrl,
+                        userPhone: decodedData.userPhone,
+                        userAddress: decodedData.userAddress,
                     }, SERVER_SECRET)
                     res.cookie('jToken', token, {
                         maxAge: 86_400_000,
@@ -80,6 +81,7 @@ app.use(function (req, res, next) {
                         id: decodedData.id,
                         vendorName: decodedData.vendorName,
                         vendorEmail: decodedData.vendorEmail,
+                        vendorPhone: decodedData.vendorPhone,
                     }, SERVER_SECRET)
 
                     res.cookie('jToken', token, {
@@ -99,7 +101,8 @@ app.use(function (req, res, next) {
 })
 
 app.get("/profile", (req, res, next) => {
-    userModel.findById(req.body.jToken.id, 'userName userEmail profileUrl',
+    userModel.findById(req.body.jToken.id, "userName userEmail userAddress userPhone" , 
+        
         function (err, doc) {
             if (!err) {
                 res.send({
@@ -130,35 +133,33 @@ app.get("/vendorProfile", (req, res, next) => {
         })
 });
 
-app.post("/schdeduleMaterial" , (req,res,next)=>{
+app.post("/schdeduleMaterial", (req, res, next) => {
 
-    if (req.body.cardBoard || req.body.plastic)
-    {
-    userModel.findOne({userEmail:req.body.jToken.userEmail} , (err,userFound)=>{
-        if (!err)
-        {
-            placedCollectionModel.create({
-                cardBoard : req.body.cardBoard,
-                plastic : req.body.plastic,
-                userEmail : req.body.jToken.userEmail,
-                userName : req.body.jToken.userName,
-            }).then((orderPlaced)=>{
-                res.status(200).send({
-                    message : "Your request has been sent succesfully" + orderPlaced,
-            });
-                io.emit("requests" , orderPlaced);
-        }) 
-            .catch((err)=>{
-                    res.status(500).send({
-                        message : "an error occured"
+    if (req.body.cardBoard || req.body.plastic) {
+        userModel.findOne({ userEmail: req.body.jToken.userEmail }, (err, userFound) => {
+            if (!err) {
+                placedCollectionModel.create({
+                    cardBoard: req.body.cardBoard,
+                    plastic: req.body.plastic,
+                    userEmail: req.body.jToken.userEmail,
+                    userName: req.body.jToken.userName,
+                }).then((orderPlaced) => {
+                    res.status(200).send({
+                        message: "Your request has been sent succesfully" + orderPlaced,
+                    });
+                    io.emit("requests", orderPlaced);
+                })
+                    .catch((err) => {
+                        res.status(500).send({
+                            message: "an error occured"
+                        })
                     })
-            })
-        }
-    })
-}
-else{
+            }
+        })
+    }
+    else {
         res.status(404).send(
-        `
+            `
             Please send one of the following in json body:
             e.g
             {
@@ -167,13 +168,13 @@ else{
             }
          `
         )
-}
+    }
 
 });
 
 app.get("/myRequests", (req, res, next) => {
 
-    userModel.findOne({ userEmail: req.body.jToken.userEmail },  (err, userData) => {
+    userModel.findOne({ userEmail: req.body.jToken.userEmail }, (err, userData) => {
         if (!err) {
             placedCollectionModel.find({ userEmail: req.body.jToken.userEmail }, (err, data) => {
                 if (!err) {

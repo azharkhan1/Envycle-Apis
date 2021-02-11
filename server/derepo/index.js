@@ -43,6 +43,7 @@ var userSchema = new mongoose.Schema({
     userName: String,
     userPassword: String,
     userAddress : String,
+    userPhone : String,
     points : String,
 });
 var userModel = mongoose.model("users", userSchema);
