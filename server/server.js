@@ -28,7 +28,7 @@ var io = socketIo(server);
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:3000/userdashboard",
     credentials: true,
 }));
 app.use(cookieParser());
