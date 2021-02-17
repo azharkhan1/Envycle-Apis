@@ -37,10 +37,10 @@ app.use(cookieParser());
 
 
 app.use((req,res,next)=>{
-    header("Access-Control-Allow-Origin: http://localhost:3000");
-    header("Access-Control-Allow-Credentials: true");
-    header("Access-Control-Allow-Methods: GET, POST");
-    header("Access-Control-Allow-Headers: Content-Type, *");
+    res.header("Access-Control-Allow-Origin: http://localhost:3000");
+    res.header("Access-Control-Allow-Credentials: true");
+    res.header("Access-Control-Allow-Methods: GET, POST");
+    res.header("Access-Control-Allow-Headers: Content-Type, *");
     next();
 })
 
